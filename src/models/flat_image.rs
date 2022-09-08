@@ -1,6 +1,9 @@
 #![allow(dead_code)]
+/// An image in a single row
+///
+/// Contains height and width so it can be remapped into a 2d image
 pub struct FlatImage {
-    bytes: Vec<u8>,
+    bytes: Vec<f32>,
     height: usize,
     width: usize,
 }
@@ -10,9 +13,13 @@ impl FlatImage {
         // Check image is the correct length
         assert_eq!(raw_bytes.len(), height * width);
         Self {
-            bytes: raw_bytes.to_owned(),
+            bytes: raw_bytes.iter().map(|&i| i as f32).collect(),
             height,
             width,
         }
+    }
+
+    pub fn as_bytes(&self) -> &[f32] {
+        &self.bytes
     }
 }

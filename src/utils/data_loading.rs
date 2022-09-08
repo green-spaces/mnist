@@ -61,9 +61,8 @@ pub fn load_labels(path: &Path) -> Vec<Label> {
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
-
     use super::*;
+    use std::path::PathBuf;
 
     #[test]
     fn load_training_images() {
@@ -72,7 +71,7 @@ mod tests {
         training_images_file.push(root_dir);
         training_images_file.push("data/train-images-idx3-ubyte");
 
-        let images = super::load_images(training_images_file.as_path());
+        let images = load_images(training_images_file.as_path());
         assert_eq!(images.len(), 60000);
     }
 
@@ -83,7 +82,7 @@ mod tests {
         training_images_file.push(root_dir);
         training_images_file.push("data/t10k-images-idx3-ubyte");
 
-        let images = super::load_images(training_images_file.as_path());
+        let images = load_images(training_images_file.as_path());
         assert_eq!(images.len(), 10000);
     }
 
@@ -94,7 +93,7 @@ mod tests {
         training_labels_file.push(root_dir);
         training_labels_file.push("data/train-labels-idx1-ubyte");
 
-        let labels = super::load_labels(training_labels_file.as_path());
+        let labels = load_labels(training_labels_file.as_path());
         assert_eq!(labels.len(), 60000);
     }
 
@@ -105,7 +104,7 @@ mod tests {
         test_label_file.push(root_dir);
         test_label_file.push("data/t10k-labels-idx1-ubyte");
 
-        let labels = super::load_labels(test_label_file.as_path());
+        let labels = load_labels(test_label_file.as_path());
         assert_eq!(labels.len(), 10000);
     }
 
@@ -117,7 +116,7 @@ mod tests {
         training_labels_file.push(root_dir);
         training_labels_file.push("data/train-images-idx3-ubyte");
 
-        let labels = super::load_labels(training_labels_file.as_path());
+        let _labels = load_labels(training_labels_file.as_path());
     }
 
     #[test]
@@ -128,6 +127,6 @@ mod tests {
         training_images_file.push(root_dir);
         training_images_file.push("data/train-labels-idx1-ubyte");
 
-        let images = super::load_images(training_images_file.as_path());
+        let _images = load_images(training_images_file.as_path());
     }
 }
